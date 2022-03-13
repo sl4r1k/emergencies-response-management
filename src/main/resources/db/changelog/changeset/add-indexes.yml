@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-indexes
+      author: sl4r1k
+      changes:
+        - createTable:
+            tableName: indexes
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                  autoIncrement: true
+              - column:
+                  name: parent_id
+                  type: bigint
+                  constraints:
+                    foreignKeyName: indexes_fk
+                    references: indexes
+              - column:
+                  name: name
+                  type: varchar
+                  constraints:
+                    nullable: false
+                    unique: true
