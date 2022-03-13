@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-level-to-indexes
+      author: sl4r1k
+      changes:
+        - addColumn:
+            tableName: indexes
+            columns:
+              - column:
+                  name: level
+                  type: int
+                  constraints:
+                    nullable: false
