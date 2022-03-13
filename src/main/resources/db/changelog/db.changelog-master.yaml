@@ -1,3 +1,5 @@
 databaseChangeLog:
   - include:
       file: db/changelog/changeset/add-indexes.yml
+  - include:
+      file: db/changelog/changeset/add-level-to-indexes.yml
