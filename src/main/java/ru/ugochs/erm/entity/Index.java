@@ -1,8 +1,8 @@
 package ru.ugochs.erm.entity;
 
-import java.util.List;
-import javax.persistence.*;
 import lombok.*;
+import javax.persistence.*;
+import java.util.List;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
@@ -14,6 +14,7 @@ public class Index extends AbstractEntity {
     @ManyToOne
     private Index parent;
 
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy="parent")
     private List<Index> children;
 
