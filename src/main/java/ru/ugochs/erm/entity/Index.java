@@ -2,6 +2,7 @@ package ru.ugochs.erm.entity;
 
 import lombok.*;
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @ToString(callSuper = true)
@@ -17,7 +18,7 @@ public class Index extends AbstractEntity {
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy="parent")
-    private List<Index> children;
+    private List<Index> children = new ArrayList<>();
 
     @Column(name = "name", nullable = false, unique = true)
     private String name;
