@@ -1,8 +1,8 @@
 package ru.ugochs.erm.entity;
 
-import java.io.Serializable;
-import javax.persistence.*;
 import lombok.*;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @ToString
 @EqualsAndHashCode
