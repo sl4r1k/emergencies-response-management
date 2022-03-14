@@ -14,6 +14,7 @@ public class Index extends AbstractEntity {
     @ManyToOne
     private Index parent;
 
+    @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy="parent")
     private List<Index> children;
