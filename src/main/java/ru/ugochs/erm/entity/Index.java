@@ -23,6 +23,7 @@ public class Index extends AbstractEntity {
     @Column(name = "name", nullable = false, unique = true)
     private String name;
 
+    @Setter(AccessLevel.NONE)
     @Column(name = "level", nullable = false)
     private Integer level;
 
