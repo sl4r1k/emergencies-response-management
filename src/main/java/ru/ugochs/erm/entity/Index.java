@@ -2,13 +2,11 @@ package ru.ugochs.erm.entity;
 
 import lombok.*;
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Data
-@NoArgsConstructor
 @Table(name = "indexes")
 @Entity
 public class Index extends AbstractEntity {
@@ -26,9 +24,7 @@ public class Index extends AbstractEntity {
     @Column(name = "level", nullable = false)
     private Integer level;
 
-    public Index(String name) {
-        this.parent = null;
-        this.name = name;
+    public Index() {
         this.level = 1;
     }
 
