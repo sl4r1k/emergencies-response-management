@@ -10,6 +10,8 @@ import java.util.*;
 @Table(name = "indexes")
 @Entity
 public class Index extends AbstractEntity {
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToOne
     private Index parent;
 
