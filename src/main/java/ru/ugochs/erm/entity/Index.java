@@ -17,7 +17,7 @@ public class Index extends AbstractEntity {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(mappedBy="parent", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "parent", fetch = FetchType.EAGER, orphanRemoval = true)
     private List<Index> children = new ArrayList<>();
 
     @Column(name = "name", nullable = false, unique = true)
