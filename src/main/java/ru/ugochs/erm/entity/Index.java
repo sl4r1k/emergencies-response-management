@@ -30,14 +30,15 @@ public class Index extends AbstractEntity {
         this.level = 1;
     }
 
-    public Index(@NonNull Index parent, String name) {
-        if (parent.getLevel().equals(3)) {
-            throw new IllegalArgumentException(
-                "Иерархия индексов не должна превышать 3 уровня"
-            );
+    public void setParent(Index parent) {
+        if (Objects.nonNull(parent)) {
+            if (parent.getLevel().equals(3)) {
+                throw new IllegalArgumentException(
+                    "Иерархия индексов не должна превышать 3 уровня"
+                );
+            }
+            this.parent = parent;
+            this.level = this.parent.getLevel() + 1;
         }
-        this.parent = parent;
-        this.name = name;
-        this.level = parent.getLevel() + 1;
     }
 }
