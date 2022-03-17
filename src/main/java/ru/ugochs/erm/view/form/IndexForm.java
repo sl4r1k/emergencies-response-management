@@ -9,7 +9,7 @@ import ru.ugochs.erm.service.crud.Db;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.convert.StringAsIndex;
 
-public abstract class IndexForm extends StandardVerticalLayout {
+public abstract class IndexForm extends CentredVerticalLayout {
     protected final Db db;
     protected final Binder<Index> binder;
     protected final ComboBox<String> parentIndex;
