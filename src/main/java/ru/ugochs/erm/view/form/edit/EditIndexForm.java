@@ -23,14 +23,23 @@ public class EditIndexForm extends IndexForm implements BeforeEnterObserver {
 
     @Override
     public void beforeEnter(BeforeEnterEvent event) {
-        Index index = new GetById<>(
+        new GetById<>(
             new IdFromRoute(event.getRouteParameters()).value(),
             this.db,
             Index.class
-        ).perform();
-        this.binder.setBean(index);
-        String parentName = this.parentIndex.getValue();
-        this.parentIndex.setItems(new GetAllIndexNamesExceptLevel3AndOneElse(index, this.db).perform());
-        this.parentIndex.setValue(parentName);
+        ).perform().ifPresentOrElse(
+            index -> {
+                this.binder.setBean(index);
+                String parentName = this.parentIndex.getValue();
+                this.parentIndex.setItems(
+                    new GetAllIndexNamesExceptLevel3AndOneElse(index, this.db).perform()
+                );
+                this.parentIndex.setValue(parentName);
+            },
+            () -> event.rerouteToError(
+                NotFoundException.class,
+                "Нет такого индекса"
+            )
+        );
     }
 }
