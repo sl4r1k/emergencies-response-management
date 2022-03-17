@@ -1,8 +1,9 @@
 package ru.ugochs.erm.service.crud;
 
 import ru.ugochs.erm.entity.AbstractEntity;
+import java.util.Optional;
 
-public class GetById<T extends AbstractEntity> extends CrudOperation<T, T> {
+public class GetById<T extends AbstractEntity> extends GetSingle<T> {
     protected final Long id;
     protected final Class<T> type;
 
@@ -13,7 +14,7 @@ public class GetById<T extends AbstractEntity> extends CrudOperation<T, T> {
     }
 
     @Override
-    public T perform() {
-        return this.db.find(this.type, this.id);
+    public Optional<T> perform() {
+        return Optional.ofNullable(this.db.find(this.type, this.id));
     }
 }
