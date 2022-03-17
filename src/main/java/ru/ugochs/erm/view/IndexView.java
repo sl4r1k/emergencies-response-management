@@ -2,19 +2,19 @@ package ru.ugochs.erm.view;
 
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.treegrid.TreeGrid;
 import com.vaadin.flow.router.*;
 import ru.ugochs.erm.entity.Index;
 import ru.ugochs.erm.service.FilterIndexesByRelativeName;
-import ru.ugochs.erm.service.crud.*;
+import ru.ugochs.erm.service.crud.Db;
+import ru.ugochs.erm.service.crud.GetAllIndexesByLevel1;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.form.add.AddIndexForm;
 import ru.ugochs.erm.view.form.edit.EditIndexForm;
 
 @PageTitle("Индексы")
 @Route("indexes")
-public class IndexView extends VerticalLayout implements BeforeEnterObserver {
+public class IndexView extends FullSizedVerticalLayout implements BeforeEnterObserver {
     private final Db db;
     private final TreeGrid<Index> indexes;
 
