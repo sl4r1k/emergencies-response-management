@@ -21,7 +21,7 @@ public class EditIndexForm extends IndexForm implements BeforeEnterObserver {
                     IndexView.class
                 ),
                 new RemoveButton<>(
-                    index -> new RemoveIndex(index, this.db),
+                    index -> new Remove<>(index, this.db),
                     this.binder,
                     IndexView.class
                 ),
