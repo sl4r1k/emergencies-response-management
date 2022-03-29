@@ -35,6 +35,7 @@ public class AddButton<T extends AbstractEntity> extends Button {
                             ButtonOption.caption("Понятно"),
                             ButtonOption.focus()
                         ).open();
+                    return;
                 }
                 new Navigation(route).perform();
             }
