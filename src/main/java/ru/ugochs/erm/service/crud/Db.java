@@ -14,9 +14,9 @@ public class Db {
     private EntityManager em;
 
     @Delegate(types = TransactionTemplate.class)
-    private TransactionTemplate template;
+    private TransactionTemplate tt;
 
     public Db(PlatformTransactionManager ptm) {
-        this.template = new TransactionTemplate(ptm);
+        this.tt = new TransactionTemplate(ptm);
     }
 }
