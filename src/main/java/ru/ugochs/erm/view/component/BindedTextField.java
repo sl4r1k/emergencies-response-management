@@ -10,6 +10,8 @@ public class BindedTextField<T extends AbstractEntity> extends TextField {
     public BindedTextField(String label, Binder<T> binder,
                            ValueProvider<T, String> getter, Setter<T, String> setter) {
         super(label);
-        binder.forField(this).bind(getter, setter);
+        binder.forField(this)
+            .asRequired("Заполните поле")
+            .bind(getter, setter);
     }
 }
