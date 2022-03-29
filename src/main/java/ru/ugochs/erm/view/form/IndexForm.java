@@ -32,7 +32,8 @@ public abstract class IndexForm extends CentredVerticalLayout {
                     "Название",
                     this.binder,
                     Index::getName,
-                    Index::setName)
+                    Index::setName
+                )
             )
         );
     }
