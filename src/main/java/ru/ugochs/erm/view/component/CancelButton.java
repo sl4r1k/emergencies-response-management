@@ -5,7 +5,7 @@ import com.vaadin.flow.component.button.Button;
 
 public class CancelButton extends Button {
     public CancelButton() {
-        super("Отменить", event -> new BackInHistory().perform());
+        super("Отмена", event -> new BackInHistory().perform());
         this.addClickShortcut(Key.ESCAPE);
     }
 }
