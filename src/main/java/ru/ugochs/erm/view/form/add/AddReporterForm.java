@@ -5,6 +5,7 @@ import com.vaadin.flow.router.Route;
 import ru.ugochs.erm.entity.Reporter;
 import ru.ugochs.erm.service.crud.AddReporter;
 import ru.ugochs.erm.service.crud.Db;
+import ru.ugochs.erm.view.ReporterView;
 import ru.ugochs.erm.view.component.AddButton;
 import ru.ugochs.erm.view.component.CancelButton;
 import ru.ugochs.erm.view.form.ReporterForm;
