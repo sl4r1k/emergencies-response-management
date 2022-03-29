@@ -1,5 +1,6 @@
 package ru.ugochs.erm.view.component;
 
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
@@ -8,13 +9,15 @@ import org.claspina.confirmdialog.ButtonOption;
 import org.claspina.confirmdialog.ConfirmDialog;
 import ru.ugochs.erm.entity.AbstractEntity;
 import ru.ugochs.erm.service.crud.Add;
+import ru.ugochs.erm.view.Navigation;
 import javax.persistence.EntityExistsException;
 import java.util.function.Function;
 
 public class AddButton<T extends AbstractEntity> extends Button {
     public AddButton(
         Function<? super T, ? extends Add<T>> operation,
-        Binder<? extends T> binder
+        Binder<? extends T> binder,
+        Class<? extends Component> route
     ) {
         super(
             "Добавить",
@@ -33,7 +36,7 @@ public class AddButton<T extends AbstractEntity> extends Button {
                             ButtonOption.focus()
                         ).open();
                 }
-                new BackInHistory().perform();
+                new Navigation(route).perform();
             }
         );
         this.addClickShortcut(Key.ENTER);

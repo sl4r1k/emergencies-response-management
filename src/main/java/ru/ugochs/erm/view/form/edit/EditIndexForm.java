@@ -5,6 +5,7 @@ import com.vaadin.flow.router.*;
 import ru.ugochs.erm.entity.Index;
 import ru.ugochs.erm.service.crud.*;
 import ru.ugochs.erm.view.IdFromRoute;
+import ru.ugochs.erm.view.IndexView;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.form.IndexForm;
 
@@ -14,9 +15,17 @@ public class EditIndexForm extends IndexForm implements BeforeEnterObserver {
         super(db);
         this.add(
             new HorizontalLayout(
-                new EditButton<>(index -> new EditIndex(index, this.db), this.binder),
-                new RemoveButton<>(index -> new RemoveIndex(index, this.db), this.binder),
-                new CancelButton()
+                new EditButton<>(
+                    index -> new EditIndex(index, this.db),
+                    this.binder,
+                    IndexView.class
+                ),
+                new RemoveButton<>(
+                    index -> new RemoveIndex(index, this.db),
+                    this.binder,
+                    IndexView.class
+                ),
+                new CancelButton(IndexView.class)
             )
         );
     }
