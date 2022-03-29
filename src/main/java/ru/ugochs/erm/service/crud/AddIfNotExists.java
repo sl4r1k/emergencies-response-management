@@ -8,7 +8,13 @@ public class AddIfNotExists<T extends AbstractEntity> extends Add<T> {
     private final Object value;
     private final String message;
 
-    public AddIfNotExists(T entity, String attribute, Object value, String message, Db db) {
+    public AddIfNotExists(
+        T entity,
+        String attribute,
+        Object value,
+        String message,
+        Db db
+    ) {
         super(entity, db);
         this.attribute = attribute;
         this.value = value;
