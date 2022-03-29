@@ -3,3 +3,5 @@ databaseChangeLog:
       file: db/changelog/changeset/add-indexes.yml
   - include:
       file: db/changelog/changeset/add-level-to-indexes.yml
+  - include:
+      file: db/changelog/changeset/add-reporters.yml
