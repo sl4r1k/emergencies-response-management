@@ -13,4 +13,23 @@ public class EditService extends EditIfNotExists<Service> {
             db
         );
     }
+
+    @Override
+    public Service perform() {
+        new GetReporterByName(
+            new GetById<>(
+                this.entity.getId(),
+                this.db,
+                Service.class
+            ).perform().get().getName(),
+            this.db
+        ).perform().ifPresent(reporter -> {
+            reporter.setName(this.entity.getName());
+            new EditReporter(
+                reporter,
+                this.db
+            ).perform();
+        });
+        return super.perform();
+    }
 }
