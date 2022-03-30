@@ -5,7 +5,7 @@ import com.vaadin.flow.router.Route;
 import ru.ugochs.erm.entity.District;
 import ru.ugochs.erm.service.crud.AddDistrict;
 import ru.ugochs.erm.service.crud.Db;
-import ru.ugochs.erm.view.ServiceView;
+import ru.ugochs.erm.view.DistrictView;
 import ru.ugochs.erm.view.component.AddButton;
 import ru.ugochs.erm.view.component.CancelButton;
 import ru.ugochs.erm.view.form.DistrictForm;
