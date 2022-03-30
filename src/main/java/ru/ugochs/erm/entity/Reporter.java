@@ -5,6 +5,8 @@ import javax.persistence.*;
 
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 @Table(name = "reporters")
 @Entity
