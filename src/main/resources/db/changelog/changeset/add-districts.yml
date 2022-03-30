@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-districts
+      author: sl4r1k
+      changes:
+        - createTable:
+            tableName: districts
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                  autoIncrement: true
+              - column:
+                  name: name
+                  type: varchar
+                  constraints:
+                    nullable: false
+                    unique: true

@@ -7,3 +7,5 @@ databaseChangeLog:
       file: db/changelog/changeset/add-reporters.yml
   - include:
       file: db/changelog/changeset/add-services.yml
+  - include:
+      file: db/changelog/changeset/add-districts.yml
