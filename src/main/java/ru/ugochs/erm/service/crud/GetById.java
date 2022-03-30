@@ -8,7 +8,7 @@ public class GetById<T extends AbstractEntity> extends GetSingle<T> {
     protected final Class<T> type;
 
     public GetById(Long id, Db db, Class<T> type) {
-        super(db);
+        super(null, null, db, null);
         this.id = id;
         this.type = type;
     }
