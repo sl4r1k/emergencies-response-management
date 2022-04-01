@@ -8,9 +8,13 @@ import com.vaadin.flow.function.ValueProvider;
 import ru.ugochs.erm.entity.AbstractEntity;
 import java.util.Collections;
 
-public class StandardBindedComboBox<E extends AbstractEntity> extends ComboBox<String> {
-    public StandardBindedComboBox(String label, Binder<E> binder, Converter<String, E> converter,
-                                  ValueProvider<E, E> getter, Setter<E, E> setter) {
+public class StandardBindedComboBox<E1 extends AbstractEntity, E2 extends AbstractEntity> extends ComboBox<String> {
+    public StandardBindedComboBox(
+        String label, Binder<E2> binder,
+        Converter<String, E1> converter,
+        ValueProvider<E2, E1> getter,
+        Setter<E2, E1> setter
+    ) {
         super(label);
         this.setItems(Collections.emptyList());
         this.setAllowCustomValue(false);
