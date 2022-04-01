@@ -8,7 +8,7 @@ import ru.ugochs.erm.view.component.AddButton;
 import ru.ugochs.erm.view.component.CancelButton;
 import ru.ugochs.erm.view.form.StreetForm;
 
-@Route("indexes/add")
+@Route("streets/add")
 public class AddStreetForm extends StreetForm {
     public AddStreetForm(Db db) {
         super(db);
