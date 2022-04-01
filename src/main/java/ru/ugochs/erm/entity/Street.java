@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Table(name = "streets")
 @Entity
 public class Street extends AbstractEntity {
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private District district;
 
     @Column(name = "name", nullable = false, unique = true)
