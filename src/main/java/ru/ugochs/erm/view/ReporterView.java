@@ -20,13 +20,25 @@ public class ReporterView extends FullSizedVerticalLayout implements BeforeEnter
     public ReporterView(Db db) {
         this.db = db;
         this.reporters = new StandardGrid<>(
-            Reporter::getName,
-            clickEvent -> new NavigationByEntity(clickEvent.getItem(), EditReporterForm.class).perform()
+            new GridColumns<>(
+                new GridColumn<>(
+                    Reporter::getName
+                )
+            ),
+            clickEvent -> new NavigationByEntity(
+                clickEvent.getItem(),
+                EditReporterForm.class
+            ).perform()
         );
         this.add(
             new StandardHorizontalLayout(
                 new H2("Заявители"),
-                new Button("Добавить", event -> new Navigation(AddReporterForm.class).perform())
+                new Button(
+                    "Добавить",
+                    event -> new Navigation(
+                        AddReporterForm.class
+                    ).perform()
+                )
             ),
             this.reporters
         );
@@ -34,6 +46,11 @@ public class ReporterView extends FullSizedVerticalLayout implements BeforeEnter
 
     @Override
     public void beforeEnter(BeforeEnterEvent event) {
-        this.reporters.setItems(new GetAll<>(this.db, Reporter.class).perform());
+        this.reporters.setItems(
+            new GetAll<>(
+                this.db,
+                Reporter.class
+            ).perform()
+        );
     }
 }

@@ -20,7 +20,9 @@ public class DistrictView extends FullSizedVerticalLayout implements BeforeEnter
     public DistrictView(Db db) {
         this.db = db;
         this.districts = new StandardGrid<>(
-            District::getName,
+            new GridColumns<>(
+                new GridColumn<>(District::getName)
+            ),
             clickEvent -> new NavigationByEntity(
                 clickEvent.getItem(),
                 EditDistrictForm.class

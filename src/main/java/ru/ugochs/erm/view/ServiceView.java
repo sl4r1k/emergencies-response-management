@@ -20,13 +20,23 @@ public class ServiceView extends FullSizedVerticalLayout implements BeforeEnterO
     public ServiceView(Db db) {
         this.db = db;
         this.services = new StandardGrid<>(
-            Service::getName,
-            clickEvent -> new NavigationByEntity(clickEvent.getItem(), EditServiceForm.class).perform()
+            new GridColumns<>(
+                new GridColumn<>(Service::getName)
+            ),
+            clickEvent -> new NavigationByEntity(
+                clickEvent.getItem(),
+                EditServiceForm.class
+            ).perform()
         );
         this.add(
             new StandardHorizontalLayout(
                 new H2("Службы"),
-                new Button("Добавить", event -> new Navigation(AddServiceForm.class).perform())
+                new Button(
+                    "Добавить",
+                    event -> new Navigation(
+                        AddServiceForm.class
+                    ).perform()
+                )
             ),
             this.services
         );
@@ -34,6 +44,11 @@ public class ServiceView extends FullSizedVerticalLayout implements BeforeEnterO
 
     @Override
     public void beforeEnter(BeforeEnterEvent event) {
-        this.services.setItems(new GetAll<>(this.db, Service.class).perform());
+        this.services.setItems(
+            new GetAll<>(
+                this.db,
+                Service.class
+            ).perform()
+        );
     }
 }
