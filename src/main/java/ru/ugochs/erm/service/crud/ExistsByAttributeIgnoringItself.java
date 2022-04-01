@@ -5,7 +5,7 @@ import ru.ugochs.erm.entity.AbstractEntity;
 public class ExistsByAttributeIgnoringItself<T extends AbstractEntity> extends ExistsByAttribute<T> {
     private final Long id;
 
-    public ExistsByAttributeIgnoringItself(String attribute, Object value, Long id, Db db, Class type) {
+    public ExistsByAttributeIgnoringItself(String attribute, Object value, Long id, Db db, Class<T> type) {
         super(attribute, value, db, type);
         this.id = id;
     }
