@@ -4,6 +4,7 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.Route;
 import ru.ugochs.erm.entity.Street;
 import ru.ugochs.erm.service.crud.*;
+import ru.ugochs.erm.view.StreetView;
 import ru.ugochs.erm.view.component.AddButton;
 import ru.ugochs.erm.view.component.CancelButton;
 import ru.ugochs.erm.view.form.StreetForm;

@@ -5,6 +5,7 @@ import com.vaadin.flow.router.*;
 import ru.ugochs.erm.entity.Street;
 import ru.ugochs.erm.service.crud.*;
 import ru.ugochs.erm.view.IdFromRoute;
+import ru.ugochs.erm.view.StreetView;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.form.StreetForm;
 
