@@ -1,5 +1,7 @@
 package ru.ugochs.erm.entity;
 
+import java.util.List;
+
 public enum Role {
     ADMIN("ROLE_ADMIN", "Администратор"),
     USER("ROLE_USER", "Пользователь");
@@ -16,6 +18,13 @@ public enum Role {
         return Role.ADMIN.russianName.equals(russianName)
             ? Role.ADMIN
             : Role.USER;
+    }
+
+    public static List<String> russianNames() {
+        return List.of(
+            Role.ADMIN.russianName,
+            Role.USER.russianName
+        );
     }
 
     public String systemName() {
