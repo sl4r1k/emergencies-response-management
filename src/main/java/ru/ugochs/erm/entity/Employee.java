@@ -25,4 +25,22 @@ public class Employee extends AbstractEntity {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    public String fullName() {
+        return String.format(
+            "%s %s %s",
+            this.lastName,
+            this.firstName,
+            this.middleName
+        );
+    }
+
+    public String initials() {
+        return String.format(
+            "%s %s. %s.",
+            this.lastName,
+            this.firstName.substring(0, 1),
+            this.lastName.substring(0, 1)
+        );
+    }
 }
