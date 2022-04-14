@@ -2,7 +2,7 @@ package ru.ugochs.erm.service.crud;
 
 import ru.ugochs.erm.entity.AbstractEntity;
 import ru.ugochs.erm.entity.Index;
-import javax.persistence.EntityExistsException;
+import ru.ugochs.erm.exception.EntityExistsException;
 
 public class EditIfNotExists<T extends AbstractEntity> extends Edit<T> {
     private final String attribute;

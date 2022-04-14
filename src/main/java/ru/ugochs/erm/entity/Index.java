@@ -1,6 +1,7 @@
 package ru.ugochs.erm.entity;
 
 import lombok.*;
+import ru.ugochs.erm.exception.IllegalArgumentException;
 import javax.persistence.*;
 import java.util.*;
 

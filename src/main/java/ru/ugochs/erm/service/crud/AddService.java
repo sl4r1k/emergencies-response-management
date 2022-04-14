@@ -2,7 +2,7 @@ package ru.ugochs.erm.service.crud;
 
 import ru.ugochs.erm.entity.Reporter;
 import ru.ugochs.erm.entity.Service;
-import javax.persistence.EntityExistsException;
+import ru.ugochs.erm.exception.EntityExistsException;
 
 public class AddService extends AddIfNotExists<Service> {
     public AddService(Service service, Db db) {

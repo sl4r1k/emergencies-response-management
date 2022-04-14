@@ -1,7 +1,7 @@
 package ru.ugochs.erm.service.crud;
 
 import ru.ugochs.erm.entity.AbstractEntity;
-import javax.persistence.EntityExistsException;
+import ru.ugochs.erm.exception.EntityExistsException;
 
 public class AddIfNotExists<T extends AbstractEntity> extends Add<T> {
     private final String attribute;

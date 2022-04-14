@@ -1,8 +1,8 @@
 package ru.ugochs.erm.service.crud;
 
 import ru.ugochs.erm.entity.AbstractEntity;
+import ru.ugochs.erm.exception.EntityExistsException;
 import ru.ugochs.erm.service.Parameters;
-import javax.persistence.EntityExistsException;
 
 public class AddIfNotExistsByAttributes<T extends AbstractEntity> extends Add<T> {
     private final Parameters parameters;
