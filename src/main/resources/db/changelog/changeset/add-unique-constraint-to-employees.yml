@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-unique-constraint-to-employees
+      author: sl4r1k
+      changes:
+        - addUniqueConstraint:
+            columnNames: last_name, firs_name, middle_name
+            tableName: employees
