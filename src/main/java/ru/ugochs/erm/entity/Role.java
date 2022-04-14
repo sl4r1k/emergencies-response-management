@@ -12,6 +12,12 @@ public enum Role {
         this.russianName = russianName;
     }
 
+    public static Role valueOfRussianName(String russianName) {
+        return Role.ADMIN.russianName.equals(russianName)
+            ? Role.ADMIN
+            : Role.USER;
+    }
+
     public String systemName() {
         return this.systemName;
     }
