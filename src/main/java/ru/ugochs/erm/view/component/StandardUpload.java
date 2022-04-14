@@ -12,6 +12,16 @@ public class StandardUpload extends Upload {
         Function<? super MemoryBuffer, ? extends ComponentEventListener<SucceededEvent>> event
     ) {
         super(buffer);
+        this.setAcceptedFileTypes(".xls", ".xlsx");
+        this.setMaxFiles(1);
+        int twoMbSize = 2 * 1024 * 1024;
+        this.setMaxFileSize(twoMbSize);
+        this.addFileRejectedListener(rejectedEvent -> {
+            new ErrorNotification(
+                rejectedEvent.getErrorMessage()
+            ).open();
+        });
+        this.setI18n(new UploadRussianI18n());
         this.addSucceededListener(event.apply(buffer));
     }
 }
