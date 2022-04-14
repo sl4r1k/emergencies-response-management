@@ -1,11 +1,10 @@
-package ru.ugochs.erm.view;
+package ru.ugochs.erm.view.form;
 
 import com.vaadin.flow.component.combobox.ComboBox;
 import ru.ugochs.erm.entity.Employee;
 import ru.ugochs.erm.service.crud.Db;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.convert.StringAsRole;
-import ru.ugochs.erm.view.form.Form;
 
 public abstract class EmployeeForm extends Form<Employee> {
     protected final ComboBox<String> role;
@@ -44,7 +43,7 @@ public abstract class EmployeeForm extends Form<Employee> {
                     "Пароль",
                     this.binder,
                     Employee::getPassword,
-                    Employee::setMiddleName
+                    Employee::setPassword
                 )
             )
         );
