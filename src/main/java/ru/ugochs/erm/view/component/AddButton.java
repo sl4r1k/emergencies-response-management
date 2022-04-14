@@ -5,12 +5,9 @@ import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.data.binder.Binder;
-import org.claspina.confirmdialog.ButtonOption;
-import org.claspina.confirmdialog.ConfirmDialog;
 import ru.ugochs.erm.entity.AbstractEntity;
 import ru.ugochs.erm.service.crud.Add;
 import ru.ugochs.erm.view.Navigation;
-import javax.persistence.EntityExistsException;
 import java.util.function.Function;
 
 public class AddButton<T extends AbstractEntity> extends Button {
@@ -25,18 +22,7 @@ public class AddButton<T extends AbstractEntity> extends Button {
                 if (!binder.validate().isOk()) {
                     return;
                 }
-                try {
-                    operation.apply(binder.getBean()).perform();
-                } catch (EntityExistsException exception) {
-                    ConfirmDialog.createError()
-                        .withCaption("Ошибка добавления")
-                        .withMessage("Такая запись уже существует!")
-                        .withOkButton(
-                            ButtonOption.caption("Понятно"),
-                            ButtonOption.focus()
-                        ).open();
-                    return;
-                }
+                operation.apply(binder.getBean()).perform();
                 new Navigation(route).perform();
             }
         );
