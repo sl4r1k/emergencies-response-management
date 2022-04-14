@@ -1,6 +1,5 @@
 package ru.ugochs.erm.view;
 
-import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H2;
@@ -9,6 +8,8 @@ import ru.ugochs.erm.entity.Employee;
 import ru.ugochs.erm.service.crud.Db;
 import ru.ugochs.erm.service.crud.GetAll;
 import ru.ugochs.erm.view.component.*;
+import ru.ugochs.erm.view.form.add.AddEmployeeForm;
+import ru.ugochs.erm.view.form.edit.EditEmployeeForm;
 
 @PageTitle("Сотрудники")
 @Route("employees")
@@ -29,14 +30,19 @@ public class EmployeeView extends FullSizedVerticalLayout implements BeforeEnter
                     "Роль"
                 )
             ),
-            null
+            clickEvent -> new NavigationByEntity(
+                clickEvent.getItem(),
+                EditEmployeeForm.class
+            ).perform()
         );
         this.add(
             new StandardHorizontalLayout(
                 new H2("Сотрудники"),
                 new Button(
                     "Добавить",
-                    (Component) null
+                    event -> new Navigation(
+                        AddEmployeeForm.class
+                    ).perform()
                 )
             ),
             this.employees
