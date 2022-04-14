@@ -1,21 +1,21 @@
 package ru.ugochs.erm.exception;
 
-public class ApplicationIllegalArgumentException extends ApplicationException {
-    public ApplicationIllegalArgumentException() {}
+public class IllegalArgumentException extends ApplicationException {
+    public IllegalArgumentException() {}
 
-    public ApplicationIllegalArgumentException(String message) {
+    public IllegalArgumentException(String message) {
         super(message);
     }
 
-    public ApplicationIllegalArgumentException(String message, Throwable cause) {
+    public IllegalArgumentException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public ApplicationIllegalArgumentException(Throwable cause) {
+    public IllegalArgumentException(Throwable cause) {
         super(cause);
     }
 
-    protected ApplicationIllegalArgumentException(
+    protected IllegalArgumentException(
         String message,
         Throwable cause,
         boolean enableSuppression,
