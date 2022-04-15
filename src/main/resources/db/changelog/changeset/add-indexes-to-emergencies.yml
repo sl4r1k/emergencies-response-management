@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-indexes-to-emergencies
+      author: sl4r1k
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: happened
+            tableName: emergencies
+        - createIndex:
+            columns:
+              - column:
+                  name: index_id
+            tableName: emergencies
+        - createIndex:
+            columns:
+              - column:
+                  name: reporter_id
+            tableName: emergencies
+        - createIndex:
+            columns:
+              - column:
+                  name: street_id
+            tableName: emergencies
+        - createIndex:
+            columns:
+              - column:
+                  name: is_completed
+            tableName: emergencies

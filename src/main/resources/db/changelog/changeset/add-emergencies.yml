@@ -1,0 +1,77 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-emergencies
+      author: sl4r1k
+      changes:
+        - createTable:
+            tableName: emergencies
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                  autoIncrement: true
+              - column:
+                  name: happened
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: index_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: clob
+              - column:
+                  name: reporter_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: street_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: house
+                  type: varchar
+              - column:
+                  name: house_fraction
+                  type: varchar
+              - column:
+                  name: floor
+                  type: varchar
+              - column:
+                  name: dead
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: injured
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: rescued
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_completed
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: completed
+                  type: datetime
+              - column:
+                  name: result_description
+                  type: clob
+              - column:
+                  name: employee_id
+                  type: bigint
+                  constraints:
+                    nullable: false

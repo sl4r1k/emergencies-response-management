@@ -15,3 +15,8 @@ databaseChangeLog:
       file: db/changelog/changeset/add-employees.yml
   - include:
       file: db/changelog/changeset/add-unique-constraint-to-employees.yml
+  - include:
+      file: db/changelog/changeset/add-emergencies.yml
+  - include:
+      file: db/changelog/changeset/add-indexes-to-emergencies.yml
+
