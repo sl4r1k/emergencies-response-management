@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-attracted-services
+      author: sl4r1k
+      changes:
+        - createTable:
+            tableName: attracted-services
+            columns:
+              - column:
+                  name: emergency_id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: service_id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
