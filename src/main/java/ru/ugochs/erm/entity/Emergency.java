@@ -20,7 +20,6 @@ public class Emergency extends AbstractEntity {
     @JoinColumn(name = "index_id", nullable = false)
     private Index index;
 
-    @Lob
     @Column(name = "description")
     private String description;
 
@@ -63,7 +62,6 @@ public class Emergency extends AbstractEntity {
     @Column(name = "completed")
     private LocalDateTime completed;
 
-    @Lob
     @Column(name = "result_description")
     private String resultDescription;
 
