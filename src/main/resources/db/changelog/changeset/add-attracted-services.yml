@@ -4,7 +4,7 @@ databaseChangeLog:
       author: sl4r1k
       changes:
         - createTable:
-            tableName: attracted-services
+            tableName: attracted_services
             columns:
               - column:
                   name: emergency_id

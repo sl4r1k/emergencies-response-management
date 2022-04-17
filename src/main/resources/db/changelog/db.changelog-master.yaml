@@ -20,4 +20,4 @@ databaseChangeLog:
   - include:
       file: db/changelog/changeset/add-indexes-to-emergencies.yml
   - include:
-      file: db/changelog/changeset/add-attracted-emergencies.yml
+      file: db/changelog/changeset/add-attracted-services.yml
