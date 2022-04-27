@@ -1,6 +1,8 @@
 package ru.ugochs.erm.entity;
 
 import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -41,14 +43,15 @@ public class Emergency extends AbstractEntity {
     private String floor;
 
     @Column(name = "dead", nullable = false)
-    private Integer dead;
+    private Integer dead = 0;
 
     @Column(name = "injured", nullable = false)
-    private Integer injured;
+    private Integer injured = 0;
 
     @Column(name = "rescued", nullable = false)
-    private Integer rescued;
+    private Integer rescued = 0;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "attracted_services",
         joinColumns = @JoinColumn(name = "emergency_id"),
@@ -58,14 +61,4 @@ public class Emergency extends AbstractEntity {
 
     @Column(name = "is_completed", nullable = false)
     private Boolean isCompleted;
-
-    @Column(name = "completed")
-    private LocalDateTime completed;
-
-    @Column(name = "result_description")
-    private String resultDescription;
-
-    @ManyToOne
-    @JoinColumn(name = "employee_id", nullable = false)
-    private Employee employee;
 }
