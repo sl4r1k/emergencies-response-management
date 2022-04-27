@@ -21,3 +21,5 @@ databaseChangeLog:
       file: db/changelog/changeset/add-indexes-to-emergencies.yml
   - include:
       file: db/changelog/changeset/add-attracted-services.yml
+  - include:
+      file: db/changelog/changeset/remove-unnecessary-columns-from-emergencies.yml
