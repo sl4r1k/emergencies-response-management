@@ -1,4 +1,4 @@
-package ru.ugochs.erm.view;
+package ru.ugochs.erm.view.component;
 
 import com.vaadin.flow.component.grid.Grid;
 import java.util.List;
