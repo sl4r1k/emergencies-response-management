@@ -3,14 +3,17 @@ package ru.ugochs.erm.view;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H2;
+import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.*;
 import ru.ugochs.erm.entity.Emergency;
 import ru.ugochs.erm.service.crud.Db;
 import ru.ugochs.erm.service.crud.GetAll;
 import ru.ugochs.erm.view.component.*;
+import ru.ugochs.erm.view.form.add.AddEmergencyForm;
+import ru.ugochs.erm.view.form.edit.EditEmergencyForm;
 
 @PageTitle("Происшествия")
-@Route("emergencies")
+@Route(value = "emergencies", layout = MainLayout.class)
 public class EmergencyView extends FullSizedVerticalLayout implements BeforeEnterObserver {
     private final Db db;
     private final Grid<Emergency> emergencies;
@@ -19,58 +22,62 @@ public class EmergencyView extends FullSizedVerticalLayout implements BeforeEnte
         this.db = db;
         this.emergencies = new StandardGrid<>(
             new GridColumns<>(
-                new GridColumn<>(
+                new ValueGridColumn<>(
                     Emergency::getId,
                     "№"
                 ),
-                new GridColumn<>(
+                new ValueGridColumn<>(
                     emergency -> emergency.getHappened().toLocalDate(),
                     "Дата"
                 ),
-                new GridColumn<>(
+                new ValueGridColumn<>(
                     emergency -> emergency.getHappened().toLocalTime(),
                     "Время"
                 ),
-                new GridColumn<>(
+                new ValueGridColumn<>(
                     emergency -> emergency.getReporter().getName(),
                     "Заявитель"
                 ),
-                new GridColumn<>(
+                new ValueGridColumn<>(
                     emergency -> emergency.getIndex().getName(),
                     "Индекс"
                 ),
-                new GridColumn<>(
+                new ValueGridColumn<>(
                     emergency -> emergency.getStreet().getDistrict().getName(),
                     "Район"
                 ),
-                new GridColumn<>(
+                new ValueGridColumn<>(
                     emergency -> emergency.getStreet().getName(),
                     "Улица"
                 ),
-                new GridColumn<>(
+                new ValueGridColumn<>(
                     emergency -> emergency.getServices().size(),
                     "СЭР"
                 ),
-                new GridColumn<>(
+                new ValueGridColumn<>(
                     Emergency::getDead,
                     "Погибло"
                 ),
-                new GridColumn<>(
+                new ValueGridColumn<>(
                     Emergency::getInjured,
                     "Пострадало"
                 ),
-                new GridColumn<>(
+                new ValueGridColumn<>(
                     Emergency::getRescued,
                     "Спасено"
                 ),
-                new GridColumn<>(
-                    Emergency::getIsCompleted,
+                new RenderGridColumn<>(
+                    new ComponentRenderer<>(
+                        emergency -> new YesNoBadge(
+                            emergency.getIsCompleted()
+                        )
+                    ),
                     "Завершено"
                 )
             ),
             clickEvent -> new NavigationByEntity(
                 clickEvent.getItem(),
-                null
+                EditEmergencyForm.class
             ).perform()
         );
         this.add(
@@ -79,7 +86,7 @@ public class EmergencyView extends FullSizedVerticalLayout implements BeforeEnte
                 new Button(
                     "Добавить",
                     event -> new Navigation(
-                        null
+                        AddEmergencyForm.class
                     ).perform()
                 )
             ),
