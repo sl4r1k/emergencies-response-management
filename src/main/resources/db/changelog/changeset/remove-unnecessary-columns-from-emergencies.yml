@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: remove-unnecessary-columns-from-emergencies
+      author: sl4r1k
+      changes:
+        - dropColumn:
+            columns:
+              - column:
+                  name: completed
+              - column:
+                  name: result_description
+              - column:
+                  name: employee_id
+            tableName: emergencies
