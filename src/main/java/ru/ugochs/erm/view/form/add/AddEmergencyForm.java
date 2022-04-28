@@ -5,14 +5,14 @@ import com.vaadin.flow.router.Route;
 import ru.ugochs.erm.entity.Emergency;
 import ru.ugochs.erm.service.crud.*;
 import ru.ugochs.erm.view.EmergencyView;
-import ru.ugochs.erm.view.MainLayout;
+import ru.ugochs.erm.view.component.NavigationMenu;
 import ru.ugochs.erm.view.component.AddButton;
 import ru.ugochs.erm.view.component.CancelButton;
 import ru.ugochs.erm.view.form.EmergencyForm;
 import javax.annotation.security.RolesAllowed;
 
 @RolesAllowed({"ADMIN", "USER"})
-@Route(value = "emergencies/add", layout = MainLayout.class)
+@Route(value = "emergencies/add", layout = NavigationMenu.class)
 public class AddEmergencyForm extends EmergencyForm {
     public AddEmergencyForm(Db db) {
         super(db);

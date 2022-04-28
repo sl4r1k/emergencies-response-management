@@ -17,7 +17,7 @@ import javax.annotation.security.RolesAllowed;
 
 @RolesAllowed("ADMIN")
 @PageTitle("Улицы")
-@Route(value = "streets", layout = MainLayout.class)
+@Route(value = "streets", layout = NavigationMenu.class)
 public class StreetView extends FullSizedVerticalLayout implements BeforeEnterObserver {
     private final Db db;
     private final Grid<Street> streets;

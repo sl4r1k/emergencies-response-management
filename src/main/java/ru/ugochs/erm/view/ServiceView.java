@@ -14,7 +14,7 @@ import javax.annotation.security.RolesAllowed;
 
 @RolesAllowed("ADMIN")
 @PageTitle("Службы")
-@Route(value = "services", layout = MainLayout.class)
+@Route(value = "services", layout = NavigationMenu.class)
 public class ServiceView extends FullSizedVerticalLayout implements BeforeEnterObserver {
     private final Db db;
     private final Grid<Service> services;

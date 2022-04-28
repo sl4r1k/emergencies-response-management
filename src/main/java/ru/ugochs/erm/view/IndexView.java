@@ -15,7 +15,7 @@ import javax.annotation.security.RolesAllowed;
 
 @RolesAllowed("ADMIN")
 @PageTitle("Индексы")
-@Route(value = "indexes", layout = MainLayout.class)
+@Route(value = "indexes", layout = NavigationMenu.class)
 public class IndexView extends FullSizedVerticalLayout implements BeforeEnterObserver {
     private final Db db;
     private final TreeGrid<Index> indexes;

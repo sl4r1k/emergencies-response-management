@@ -14,7 +14,7 @@ import javax.annotation.security.RolesAllowed;
 
 @RolesAllowed("ADMIN")
 @PageTitle("Районы")
-@Route(value = "districts", layout = MainLayout.class)
+@Route(value = "districts", layout = NavigationMenu.class)
 public class DistrictView extends FullSizedVerticalLayout implements BeforeEnterObserver {
     private final Db db;
     private final Grid<District> districts;

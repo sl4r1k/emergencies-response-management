@@ -15,7 +15,7 @@ import javax.annotation.security.RolesAllowed;
 
 @RolesAllowed({"ADMIN", "USER"})
 @PageTitle("Происшествия")
-@Route(value = "emergencies", layout = MainLayout.class)
+@Route(value = "emergencies", layout = NavigationMenu.class)
 public class EmergencyView extends FullSizedVerticalLayout implements BeforeEnterObserver {
     private final Db db;
     private final Grid<Emergency> emergencies;

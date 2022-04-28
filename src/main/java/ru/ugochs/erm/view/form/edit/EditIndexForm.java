@@ -7,10 +7,11 @@ import ru.ugochs.erm.service.crud.*;
 import ru.ugochs.erm.view.*;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.form.IndexForm;
+import ru.ugochs.erm.view.component.NavigationMenu;
 import javax.annotation.security.RolesAllowed;
 
 @RolesAllowed("ADMIN")
-@Route(value = "indexes/:id/edit", layout = MainLayout.class)
+@Route(value = "indexes/:id/edit", layout = NavigationMenu.class)
 public class EditIndexForm extends IndexForm implements BeforeEnterObserver {
     public EditIndexForm(Db db) {
         super(db);

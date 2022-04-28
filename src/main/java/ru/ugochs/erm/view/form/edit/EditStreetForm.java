@@ -7,10 +7,11 @@ import ru.ugochs.erm.service.crud.*;
 import ru.ugochs.erm.view.*;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.form.StreetForm;
+import ru.ugochs.erm.view.component.NavigationMenu;
 import javax.annotation.security.RolesAllowed;
 
 @RolesAllowed("ADMIN")
-@Route(value = "streets/:id/edit", layout = MainLayout.class)
+@Route(value = "streets/:id/edit", layout = NavigationMenu.class)
 public class EditStreetForm extends StreetForm implements BeforeEnterObserver {
     public EditStreetForm(Db db) {
         super(db);

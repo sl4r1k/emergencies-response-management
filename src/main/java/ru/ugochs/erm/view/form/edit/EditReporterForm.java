@@ -7,10 +7,11 @@ import ru.ugochs.erm.service.crud.*;
 import ru.ugochs.erm.view.*;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.form.ReporterForm;
+import ru.ugochs.erm.view.component.NavigationMenu;
 import javax.annotation.security.RolesAllowed;
 
 @RolesAllowed("ADMIN")
-@Route(value = "reporters/:id/edit", layout = MainLayout.class)
+@Route(value = "reporters/:id/edit", layout = NavigationMenu.class)
 public class EditReporterForm extends ReporterForm implements BeforeEnterObserver {
     public EditReporterForm(Db db) {
         super(db);

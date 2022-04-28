@@ -14,7 +14,7 @@ import javax.annotation.security.RolesAllowed;
 
 @RolesAllowed("ADMIN")
 @PageTitle("Сотрудники")
-@Route(value = "employees", layout = MainLayout.class)
+@Route(value = "employees", layout = NavigationMenu.class)
 public class EmployeeView extends FullSizedVerticalLayout implements BeforeEnterObserver {
     private final Db db;
     private final Grid<Employee> employees;
