@@ -7,8 +7,10 @@ import ru.ugochs.erm.service.crud.*;
 import ru.ugochs.erm.view.*;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.form.EmergencyForm;
+import javax.annotation.security.RolesAllowed;
 import java.util.Set;
 
+@RolesAllowed({"ADMIN", "USER"})
 @Route(value = "emergencies/:id/edit", layout = MainLayout.class)
 public class EditEmergencyForm extends EmergencyForm implements BeforeEnterObserver {
     public EditEmergencyForm(Db db) {

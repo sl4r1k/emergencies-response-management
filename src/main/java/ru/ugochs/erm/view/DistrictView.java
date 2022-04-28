@@ -10,9 +10,11 @@ import ru.ugochs.erm.service.crud.GetAll;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.form.add.AddDistrictForm;
 import ru.ugochs.erm.view.form.edit.EditDistrictForm;
+import javax.annotation.security.RolesAllowed;
 
+@RolesAllowed("ADMIN")
 @PageTitle("Районы")
-@Route("districts")
+@Route(value = "districts", layout = MainLayout.class)
 public class DistrictView extends FullSizedVerticalLayout implements BeforeEnterObserver {
     private final Db db;
     private final Grid<District> districts;
@@ -21,7 +23,7 @@ public class DistrictView extends FullSizedVerticalLayout implements BeforeEnter
         this.db = db;
         this.districts = new StandardGrid<>(
             new GridColumns<>(
-                new GridColumn<>(District::getName)
+                new ValueGridColumn<>(District::getName)
             ),
             clickEvent -> new NavigationByEntity(
                 clickEvent.getItem(),

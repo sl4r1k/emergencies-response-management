@@ -10,9 +10,11 @@ import ru.ugochs.erm.service.crud.GetAll;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.form.add.AddEmployeeForm;
 import ru.ugochs.erm.view.form.edit.EditEmployeeForm;
+import javax.annotation.security.RolesAllowed;
 
+@RolesAllowed("ADMIN")
 @PageTitle("Сотрудники")
-@Route("employees")
+@Route(value = "employees", layout = MainLayout.class)
 public class EmployeeView extends FullSizedVerticalLayout implements BeforeEnterObserver {
     private final Db db;
     private final Grid<Employee> employees;
@@ -21,11 +23,11 @@ public class EmployeeView extends FullSizedVerticalLayout implements BeforeEnter
         this.db = db;
         this.employees = new StandardGrid<>(
             new GridColumns<>(
-                new GridColumn<>(
-                    Employee::fullName,
+                new ValueGridColumn<>(
+                    Employee::getFullName,
                     "Сотрудник"
                 ),
-                new GridColumn<>(
+                new ValueGridColumn<>(
                     Employee -> Employee.getRole().russianName(),
                     "Роль"
                 )

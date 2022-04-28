@@ -11,9 +11,11 @@ import ru.ugochs.erm.service.crud.GetAllIndexesByLevel1;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.form.add.AddIndexForm;
 import ru.ugochs.erm.view.form.edit.EditIndexForm;
+import javax.annotation.security.RolesAllowed;
 
+@RolesAllowed("ADMIN")
 @PageTitle("Индексы")
-@Route("indexes")
+@Route(value = "indexes", layout = MainLayout.class)
 public class IndexView extends FullSizedVerticalLayout implements BeforeEnterObserver {
     private final Db db;
     private final TreeGrid<Index> indexes;

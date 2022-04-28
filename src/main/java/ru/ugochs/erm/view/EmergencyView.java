@@ -11,7 +11,9 @@ import ru.ugochs.erm.service.crud.GetAll;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.form.add.AddEmergencyForm;
 import ru.ugochs.erm.view.form.edit.EditEmergencyForm;
+import javax.annotation.security.RolesAllowed;
 
+@RolesAllowed({"ADMIN", "USER"})
 @PageTitle("Происшествия")
 @Route(value = "emergencies", layout = MainLayout.class)
 public class EmergencyView extends FullSizedVerticalLayout implements BeforeEnterObserver {

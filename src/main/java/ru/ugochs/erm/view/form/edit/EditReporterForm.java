@@ -4,12 +4,13 @@ import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.router.*;
 import ru.ugochs.erm.entity.Reporter;
 import ru.ugochs.erm.service.crud.*;
-import ru.ugochs.erm.view.IdFromRoute;
-import ru.ugochs.erm.view.ReporterView;
+import ru.ugochs.erm.view.*;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.form.ReporterForm;
+import javax.annotation.security.RolesAllowed;
 
-@Route("reporters/:id/edit")
+@RolesAllowed("ADMIN")
+@Route(value = "reporters/:id/edit", layout = MainLayout.class)
 public class EditReporterForm extends ReporterForm implements BeforeEnterObserver {
     public EditReporterForm(Db db) {
         super(db);

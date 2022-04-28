@@ -13,9 +13,11 @@ import ru.ugochs.erm.service.crud.GetAll;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.form.add.AddStreetForm;
 import ru.ugochs.erm.view.form.edit.EditStreetForm;
+import javax.annotation.security.RolesAllowed;
 
+@RolesAllowed("ADMIN")
 @PageTitle("Улицы")
-@Route("streets")
+@Route(value = "streets", layout = MainLayout.class)
 public class StreetView extends FullSizedVerticalLayout implements BeforeEnterObserver {
     private final Db db;
     private final Grid<Street> streets;
@@ -24,11 +26,11 @@ public class StreetView extends FullSizedVerticalLayout implements BeforeEnterOb
         this.db = db;
         this.streets = new StandardGrid<>(
             new GridColumns<>(
-                new GridColumn<>(
+                new ValueGridColumn<>(
                     Street::getName,
                     "Улица"
                 ),
-                new GridColumn<>(
+                new ValueGridColumn<>(
                     street -> street.getDistrict().getName(),
                     "Район"
                 )

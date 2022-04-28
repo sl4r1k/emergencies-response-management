@@ -10,9 +10,11 @@ import ru.ugochs.erm.service.crud.GetAll;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.form.add.AddServiceForm;
 import ru.ugochs.erm.view.form.edit.EditServiceForm;
+import javax.annotation.security.RolesAllowed;
 
+@RolesAllowed("ADMIN")
 @PageTitle("Службы")
-@Route("services")
+@Route(value = "services", layout = MainLayout.class)
 public class ServiceView extends FullSizedVerticalLayout implements BeforeEnterObserver {
     private final Db db;
     private final Grid<Service> services;
@@ -21,7 +23,7 @@ public class ServiceView extends FullSizedVerticalLayout implements BeforeEnterO
         this.db = db;
         this.services = new StandardGrid<>(
             new GridColumns<>(
-                new GridColumn<>(Service::getName)
+                new ValueGridColumn<>(Service::getName)
             ),
             clickEvent -> new NavigationByEntity(
                 clickEvent.getItem(),

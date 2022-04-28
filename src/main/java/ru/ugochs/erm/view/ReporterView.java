@@ -10,9 +10,11 @@ import ru.ugochs.erm.service.crud.GetAll;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.form.add.AddReporterForm;
 import ru.ugochs.erm.view.form.edit.EditReporterForm;
+import javax.annotation.security.RolesAllowed;
 
+@RolesAllowed("ADMIN")
 @PageTitle("Заявители")
-@Route("reporters")
+@Route(value = "reporters", layout = MainLayout.class)
 public class ReporterView extends FullSizedVerticalLayout implements BeforeEnterObserver {
     private final Db db;
     private final Grid<Reporter> reporters;
@@ -21,7 +23,7 @@ public class ReporterView extends FullSizedVerticalLayout implements BeforeEnter
         this.db = db;
         this.reporters = new StandardGrid<>(
             new GridColumns<>(
-                new GridColumn<>(
+                new ValueGridColumn<>(
                     Reporter::getName
                 )
             ),
