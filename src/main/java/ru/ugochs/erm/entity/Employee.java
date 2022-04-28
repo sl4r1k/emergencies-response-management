@@ -32,6 +32,9 @@ public class Employee extends AbstractEntity {
     @Column(name = "role", nullable = false)
     private Role role;
 
+    @Column(name = "login", nullable = false, unique = true)
+    private String login;
+
     @Column(name = "password", nullable = false)
     private String password;
 }
