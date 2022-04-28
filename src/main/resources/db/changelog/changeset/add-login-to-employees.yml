@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: add-login-to-employees
+      author: sl4r1k
+      changes:
+        - addColumn:
+            tableName: employees
+            columns:
+              - column:
+                  name: login
+                  type: varchar
+                  constraints:
+                    nullable: false
+                    unique: true
