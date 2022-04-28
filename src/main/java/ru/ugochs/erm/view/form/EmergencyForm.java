@@ -11,6 +11,8 @@ import ru.ugochs.erm.service.crud.Db;
 import ru.ugochs.erm.service.crud.GetAllServiceNames;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.convert.*;
+import ru.ugochs.erm.view.util.StandardBindedInput;
+import ru.ugochs.erm.view.util.BindedInputWithConverter;
 import java.util.HashSet;
 
 public abstract class EmergencyForm extends Form<Emergency> {
@@ -56,12 +58,10 @@ public abstract class EmergencyForm extends Form<Emergency> {
             },
             false
         ).bind();
-        this.services.setItems(
-            new GetAllServiceNames(this.db).perform()
-        );
+        this.services.setItems(new GetAllServiceNames(this.db).perform());
         this.add(
             new StandardFormLayout(
-                new BindedInput<>(
+                new StandardBindedInput<>(
                     new DateTimePicker("Случилось"),
                     this.binder,
                     Emergency::getHappened,
@@ -69,7 +69,7 @@ public abstract class EmergencyForm extends Form<Emergency> {
                     true
                 ).bind(),
                 this.index,
-                new BindedInput<>(
+                new StandardBindedInput<>(
                     new TextArea("Описание"),
                     this.binder,
                     Emergency::getDescription,
@@ -79,21 +79,21 @@ public abstract class EmergencyForm extends Form<Emergency> {
                 this.reporter,
                 this.street,
                 new HorizontalLayout(
-                    new BindedInput<>(
+                    new StandardBindedInput<>(
                         new WidthedTextField("Дом", 20),
                         this.binder,
                         Emergency::getHouse,
                         Emergency::setHouse,
                         false
                     ).bind(),
-                    new BindedInput<>(
+                    new StandardBindedInput<>(
                         new WidthedTextField("/", 20),
                         this.binder,
                         Emergency::getHouseFraction,
                         Emergency::setHouseFraction,
                         false
                     ).bind(),
-                    new BindedInput<>(
+                    new StandardBindedInput<>(
                         new WidthedTextField("Квартира", 20),
                         this.binder,
                         Emergency::getFloor,
@@ -103,21 +103,21 @@ public abstract class EmergencyForm extends Form<Emergency> {
                 ),
                 this.services,
                 new HorizontalLayout(
-                    new BindedInput<>(
+                    new StandardBindedInput<>(
                         new WidthedIntegerField("Погибло", 25),
                         this.binder,
                         Emergency::getDead,
                         Emergency::setDead,
                         true
                     ).bind(),
-                    new BindedInput<>(
+                    new StandardBindedInput<>(
                         new WidthedIntegerField("Пострадало", 25),
                         this.binder,
                         Emergency::getInjured,
                         Emergency::setInjured,
                         true
                     ).bind(),
-                    new BindedInput<>(
+                    new StandardBindedInput<>(
                         new WidthedIntegerField("Спасено", 25),
                         this.binder,
                         Emergency::getRescued,
@@ -125,7 +125,7 @@ public abstract class EmergencyForm extends Form<Emergency> {
                         true
                     ).bind()
                 ),
-                new BindedInput<>(
+                new StandardBindedInput<>(
                     new Checkbox("Завершено"),
                     this.binder,
                     Emergency::getIsCompleted,
