@@ -39,6 +39,12 @@ public abstract class EmployeeForm extends Form<Employee> {
                     Employee::setMiddleName
                 ),
                 this.role,
+                new BindedTextField<>(
+                    "Логин",
+                    this.binder,
+                    Employee::getLogin,
+                    Employee::setLogin
+                ),
                 new BindedPasswordField<>(
                     "Пароль",
                     this.binder,
