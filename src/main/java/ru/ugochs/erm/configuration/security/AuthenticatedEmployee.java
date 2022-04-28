@@ -1,19 +1,18 @@
 package ru.ugochs.erm.configuration.security;
 
+import lombok.experimental.Delegate;
 import ru.ugochs.erm.entity.Employee;
-import ru.ugochs.erm.service.crud.*;
-import java.util.Optional;
+import ru.ugochs.erm.service.crud.Db;
+import ru.ugochs.erm.service.crud.GetEmployeeByLogin;
 
-public class AuthenticatedEmployee extends CrudOperation<Employee, Optional<Employee>> {
+public class AuthenticatedEmployee extends Employee {
+    @Delegate
+    private final Employee employee;
+
     public AuthenticatedEmployee(Db db) {
-        super(db);
-    }
-
-    @Override
-    public Optional<Employee> perform() {
-        return new GetEmployeeByLogin(
+        this.employee = new GetEmployeeByLogin(
             new CurrentAuthentication().getName(),
-            this.db
-        ).perform();
+            db
+        ).perform().get();
     }
 }
