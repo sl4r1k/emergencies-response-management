@@ -10,7 +10,9 @@ import ru.ugochs.erm.view.EmployeeView;
 import ru.ugochs.erm.view.component.AddButton;
 import ru.ugochs.erm.view.component.CancelButton;
 import ru.ugochs.erm.view.form.EmployeeForm;
+import javax.annotation.security.RolesAllowed;
 
+@RolesAllowed({"ADMIN", "USER"})
 @Route("employees/add")
 public class AddEmployeeForm extends EmployeeForm {
     public AddEmployeeForm(Db db) {

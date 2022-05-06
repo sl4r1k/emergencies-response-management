@@ -8,7 +8,9 @@ import ru.ugochs.erm.view.StreetView;
 import ru.ugochs.erm.view.component.AddButton;
 import ru.ugochs.erm.view.component.CancelButton;
 import ru.ugochs.erm.view.form.StreetForm;
+import javax.annotation.security.RolesAllowed;
 
+@RolesAllowed({"ADMIN", "USER"})
 @Route("streets/add")
 public class AddStreetForm extends StreetForm {
     public AddStreetForm(Db db) {

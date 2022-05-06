@@ -9,7 +9,9 @@ import ru.ugochs.erm.view.ServiceView;
 import ru.ugochs.erm.view.component.AddButton;
 import ru.ugochs.erm.view.component.CancelButton;
 import ru.ugochs.erm.view.form.ServiceForm;
+import javax.annotation.security.RolesAllowed;
 
+@RolesAllowed({"ADMIN", "USER"})
 @Route("services/add")
 public class AddServiceForm extends ServiceForm {
     public AddServiceForm(Db db) {

@@ -9,7 +9,9 @@ import ru.ugochs.erm.view.DistrictView;
 import ru.ugochs.erm.view.component.AddButton;
 import ru.ugochs.erm.view.component.CancelButton;
 import ru.ugochs.erm.view.form.DistrictForm;
+import javax.annotation.security.RolesAllowed;
 
+@RolesAllowed({"ADMIN", "USER"})
 @Route("districts/add")
 public class AddDistrictForm extends DistrictForm {
     public AddDistrictForm(Db db) {

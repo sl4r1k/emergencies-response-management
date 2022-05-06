@@ -8,7 +8,9 @@ import ru.ugochs.erm.view.IndexView;
 import ru.ugochs.erm.view.component.AddButton;
 import ru.ugochs.erm.view.component.CancelButton;
 import ru.ugochs.erm.view.form.IndexForm;
+import javax.annotation.security.RolesAllowed;
 
+@RolesAllowed({"ADMIN", "USER"})
 @Route("indexes/add")
 public class AddIndexForm extends IndexForm {
     public AddIndexForm(Db db) {
