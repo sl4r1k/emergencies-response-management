@@ -2,7 +2,6 @@ package ru.ugochs.erm.view.form;
 
 import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.combobox.ComboBox;
-import com.vaadin.flow.component.datetimepicker.DateTimePicker;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextArea;
 import org.vaadin.gatanaso.MultiselectComboBox;
@@ -11,8 +10,8 @@ import ru.ugochs.erm.service.crud.Db;
 import ru.ugochs.erm.service.crud.GetAllServiceNames;
 import ru.ugochs.erm.view.component.*;
 import ru.ugochs.erm.view.convert.*;
-import ru.ugochs.erm.view.util.StandardBindedInput;
 import ru.ugochs.erm.view.util.BindedInputWithConverter;
+import ru.ugochs.erm.view.util.StandardBindedInput;
 import java.util.HashSet;
 
 public abstract class EmergencyForm extends Form<Emergency> {
@@ -62,7 +61,7 @@ public abstract class EmergencyForm extends Form<Emergency> {
         this.add(
             new StandardFormLayout(
                 new StandardBindedInput<>(
-                    new DateTimePicker("Случилось"),
+                    new RussianDateTimePicker("Случилось"),
                     this.binder,
                     Emergency::getHappened,
                     Emergency::setHappened,
