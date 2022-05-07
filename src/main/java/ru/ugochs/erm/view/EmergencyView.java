@@ -7,8 +7,9 @@ import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.*;
 import ru.ugochs.erm.entity.Emergency;
 import ru.ugochs.erm.service.crud.Db;
-import ru.ugochs.erm.service.crud.GetAll;
 import ru.ugochs.erm.view.component.*;
+import ru.ugochs.erm.view.component.EmergenciesFilterCriteriaDetails;
+import ru.ugochs.erm.view.util.LocalDateAsRussianString;
 import ru.ugochs.erm.view.form.add.AddEmergencyForm;
 import ru.ugochs.erm.view.form.edit.EditEmergencyForm;
 import javax.annotation.security.RolesAllowed;
@@ -18,6 +19,7 @@ import javax.annotation.security.RolesAllowed;
 @Route(value = "emergencies", layout = NavigationMenu.class)
 public class EmergencyView extends FullSizedVerticalLayout implements BeforeEnterObserver {
     private final Db db;
+    private final EmergenciesFilterCriteriaDetails details;
     private final Grid<Emergency> emergencies;
 
     public EmergencyView(Db db) {
@@ -29,7 +31,9 @@ public class EmergencyView extends FullSizedVerticalLayout implements BeforeEnte
                     "№"
                 ),
                 new ValueGridColumn<>(
-                    emergency -> emergency.getHappened().toLocalDate(),
+                    emergency -> new LocalDateAsRussianString(
+                        emergency.getHappened().toLocalDate()
+                    ).toString(),
                     "Дата"
                 ),
                 new ValueGridColumn<>(
@@ -54,7 +58,7 @@ public class EmergencyView extends FullSizedVerticalLayout implements BeforeEnte
                 ),
                 new ValueGridColumn<>(
                     emergency -> emergency.getServices().size(),
-                    "СЭР"
+                    "Привлечено"
                 ),
                 new ValueGridColumn<>(
                     Emergency::getDead,
@@ -82,6 +86,10 @@ public class EmergencyView extends FullSizedVerticalLayout implements BeforeEnte
                 EditEmergencyForm.class
             ).perform()
         );
+        this.details = new EmergenciesFilterCriteriaDetails(
+            this.emergencies,
+            this.db
+        );
         this.add(
             new StandardHorizontalLayout(
                 new H2("Происшествия"),
@@ -92,17 +100,13 @@ public class EmergencyView extends FullSizedVerticalLayout implements BeforeEnte
                     ).perform()
                 )
             ),
+            this.details,
             this.emergencies
         );
     }
 
     @Override
     public void beforeEnter(BeforeEnterEvent event) {
-        this.emergencies.setItems(
-            new GetAll<>(
-                this.db,
-                Emergency.class
-            ).perform()
-        );
+        this.details.filter(event.getLocation().getQueryParameters());
     }
 }
