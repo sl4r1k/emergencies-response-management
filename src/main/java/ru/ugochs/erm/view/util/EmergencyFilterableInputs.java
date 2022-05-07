@@ -10,7 +10,7 @@ import ru.ugochs.erm.entity.Service;
 import ru.ugochs.erm.service.crud.*;
 import ru.ugochs.erm.view.component.RussianDatePicker;
 import ru.ugochs.erm.view.component.StandardComboBox;
-import ru.ugochs.erm.view.filt.StandardRadioButtonGroup;
+import ru.ugochs.erm.view.component.StandardRadioButtonGroup;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Predicate;
 import java.time.LocalDate;
