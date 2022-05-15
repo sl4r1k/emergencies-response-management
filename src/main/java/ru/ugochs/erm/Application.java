@@ -11,7 +11,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @NpmPackage(value = "line-awesome", version = "1.3.0")
 @SpringBootApplication
 public class Application extends SpringBootServletInitializer implements AppShellConfigurator {
-    public static void main(String[] arguments) {
-        SpringApplication.run(Application.class, arguments);
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
     }
 }
