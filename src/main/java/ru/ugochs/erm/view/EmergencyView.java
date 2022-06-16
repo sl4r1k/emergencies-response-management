@@ -1,18 +1,20 @@
 package ru.ugochs.erm.view;
 
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.*;
 import ru.ugochs.erm.entity.Emergency;
+import ru.ugochs.erm.view.util.PeriodDialog;
 import ru.ugochs.erm.service.crud.Db;
 import ru.ugochs.erm.view.component.*;
-import ru.ugochs.erm.view.component.EmergenciesFilterCriteriaDetails;
-import ru.ugochs.erm.view.util.LocalDateAsRussianString;
 import ru.ugochs.erm.view.form.add.AddEmergencyForm;
 import ru.ugochs.erm.view.form.edit.EditEmergencyForm;
+import ru.ugochs.erm.view.util.LocalDateAsRussianString;
 import javax.annotation.security.RolesAllowed;
+import java.util.Map;
 
 @RolesAllowed({"ADMIN", "USER"})
 @PageTitle("Происшествия")
@@ -24,7 +26,7 @@ public class EmergencyView extends FullSizedVerticalLayout implements BeforeEnte
 
     public EmergencyView(Db db) {
         this.db = db;
-        this.emergencies = new StandardGrid<>(
+        this.emergencies = new StandardPaginatedGrid<>(
             new GridColumns<>(
                 new ValueGridColumn<>(
                     Emergency::getId,
@@ -98,6 +100,38 @@ public class EmergencyView extends FullSizedVerticalLayout implements BeforeEnte
                     event -> new Navigation(
                         AddEmergencyForm.class
                     ).perform()
+                ),
+                new Button(
+                    "Донесение",
+                    new LineAwesomeIcon("la la-clipboard-list"),
+                    event -> new PeriodDialog(
+                        (from, to) -> UI.getCurrent()
+                            .navigate(
+                                "report",
+                                QueryParameters.simple(
+                                    Map.of(
+                                        "from", from.toString(),
+                                        "to", to.toString()
+                                    )
+                                )
+                            )
+                    ).open()
+                ),
+                new Button(
+                    "Информация",
+                    new LineAwesomeIcon("la la-clipboard-list"),
+                    event -> new PeriodDialog(
+                        (from, to) -> UI.getCurrent()
+                            .navigate(
+                                "information",
+                                QueryParameters.simple(
+                                    Map.of(
+                                        "from", from.toString(),
+                                        "to", to.toString()
+                                    )
+                                )
+                            )
+                    ).open()
                 )
             ),
             this.details,
