@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_Landscape_2" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="567f041a-16d2-4ed7-a289-86695f917343">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="date" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement x="480" y="0" width="322" height="30" uuid="ff3f34e8-9117-480f-a56d-b7d3e4968801"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16"/>
+				</textElement>
+				<text><![CDATA[Начальнику]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="30" width="322" height="30" uuid="81c869cb-e128-4b1d-b9ed-661e43b760c7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16"/>
+				</textElement>
+				<text><![CDATA["Управления по делам ГО и ЧС]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="60" width="322" height="30" uuid="24e9d6b9-fd3a-44b4-b3c8-7a007ee6f64c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16"/>
+				</textElement>
+				<text><![CDATA[города Ростова-на-Дону"]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="143">
+			<staticText>
+				<reportElement x="80" y="70" width="600" height="30" uuid="214fd295-ba2c-49a8-9315-991829057784"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16"/>
+				</textElement>
+				<text><![CDATA[на административной территории г. Ростова-на-Дону]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="40" width="600" height="30" uuid="3c18ec76-88c8-4651-9550-709818390063"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16"/>
+				</textElement>
+				<text><![CDATA[по оперативным вопросам ЕДДС о происшествиях]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="80" y="10" width="600" height="30" uuid="55f92797-82da-4a4d-8c9d-a661b437c1b4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ДОНЕСЕНИЕ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="100" width="600" height="30" uuid="23ed5324-9b60-452b-bd2d-4eae9d0d1591"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="176" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.spreadsheet.SpreadsheetLayout"/>
+		</band>
+	</detail>
+</jasperReport>
