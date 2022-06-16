@@ -10,12 +10,11 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.QueryParameters;
 import org.apache.commons.lang3.ArrayUtils;
 import ru.ugochs.erm.entity.Emergency;
+import ru.ugochs.erm.view.util.QueryParametersAsSimpleMap;
 import ru.ugochs.erm.service.crud.Db;
 import ru.ugochs.erm.service.crud.GetAll;
 import ru.ugochs.erm.view.EmergencyView;
 import ru.ugochs.erm.view.util.EmergencyFilterableInputs;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 public class EmergenciesFilterCriteriaDetails extends Accordion {
     private final Grid<Emergency> grid;
@@ -54,7 +53,10 @@ public class EmergenciesFilterCriteriaDetails extends Accordion {
                 )
             )
         );
-        panel.getSummary().getElement().getStyle().set("font-size", "150%");
+        panel.getSummary()
+            .getElement()
+            .getStyle()
+            .set("font-size", "150%");
         this.add(panel);
     }
 
@@ -70,15 +72,7 @@ public class EmergenciesFilterCriteriaDetails extends Accordion {
             this.close();
         } else {
             this.filter = new EmergencyFilterableInputs(
-                parameters.getParameters()
-                    .entrySet()
-                    .stream()
-                    .collect(
-                        Collectors.toMap(
-                            Map.Entry::getKey,
-                            value -> value.getValue().get(0)
-                        )
-                    ),
+                new QueryParametersAsSimpleMap(parameters),
                 this.db
             );
             this.grid.setItems(
@@ -89,8 +83,16 @@ public class EmergenciesFilterCriteriaDetails extends Accordion {
             this.open(0);
         }
         this.layout1.removeAll();
-        this.layout1.add(ArrayUtils.subarray(this.filter.components(), 0, 8));
+        this.layout1.add(
+            ArrayUtils.subarray(
+                this.filter.components(), 0, 8
+            )
+        );
         this.layout2.removeAll();
-        this.layout2.add(ArrayUtils.subarray(this.filter.components(), 8, 14));
+        this.layout2.add(
+            ArrayUtils.subarray(
+                this.filter.components(), 8, 14
+            )
+        );
     }
 }
