@@ -23,7 +23,7 @@ public class EditServiceForm extends ServiceForm implements BeforeEnterObserver 
                     ServiceView.class
                 ),
                 new RemoveButton<>(
-                    service -> new Remove<>(service, this.db),
+                    service -> new RemoveService(service, this.db),
                     this.binder,
                     ServiceView.class
                 ),

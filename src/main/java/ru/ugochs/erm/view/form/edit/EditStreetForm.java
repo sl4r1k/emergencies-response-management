@@ -23,7 +23,7 @@ public class EditStreetForm extends StreetForm implements BeforeEnterObserver {
                     StreetView.class
                 ),
                 new RemoveButton<>(
-                    street -> new Remove<>(street, this.db),
+                    street -> new RemoveStreet(street, this.db),
                     this.binder,
                     StreetView.class
                 ),

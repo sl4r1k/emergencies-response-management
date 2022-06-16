@@ -23,7 +23,7 @@ public class EditDistrictForm extends DistrictForm implements BeforeEnterObserve
                     DistrictView.class
                 ),
                 new RemoveButton<>(
-                    district -> new Remove<>(district, this.db),
+                    district -> new RemoveDistrict(district, this.db),
                     this.binder,
                     DistrictView.class
                 ),

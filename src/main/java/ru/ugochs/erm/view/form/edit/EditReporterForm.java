@@ -23,7 +23,7 @@ public class EditReporterForm extends ReporterForm implements BeforeEnterObserve
                     ReporterView.class
                 ),
                 new RemoveButton<>(
-                    reporter -> new Remove<>(reporter, this.db),
+                    reporter -> new RemoveReporter(reporter, this.db),
                     this.binder,
                     ReporterView.class
                 ),
