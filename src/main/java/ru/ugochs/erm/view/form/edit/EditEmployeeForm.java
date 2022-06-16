@@ -24,7 +24,7 @@ public class EditEmployeeForm extends EmployeeForm implements BeforeEnterObserve
                     EmployeeView.class
                 ),
                 new RemoveButton<>(
-                    employee -> new Remove<>(employee, this.db),
+                    employee -> new RemoveEmployee(employee, this.db),
                     this.binder,
                     EmployeeView.class
                 ),
