@@ -18,6 +18,7 @@ import org.vaadin.reports.PrintPreviewReport;
 import ru.ugochs.erm.entity.Emergency;
 import ru.ugochs.erm.service.crud.Db;
 import ru.ugochs.erm.service.crud.GetAllEmergenciesByPeriod;
+import ru.ugochs.erm.view.component.NavigationMenu;
 import ru.ugochs.erm.view.util.*;
 import javax.annotation.security.RolesAllowed;
 import java.awt.*;
@@ -26,7 +27,7 @@ import java.util.*;
 import java.util.List;
 
 @RolesAllowed({"ADMIN", "USER"})
-@Route("report")
+@Route(value = "report", layout = NavigationMenu.class)
 public class ReportView extends VerticalLayout implements BeforeEnterObserver {
     private final Db db;
 
