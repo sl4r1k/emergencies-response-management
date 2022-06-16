@@ -89,6 +89,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.vaadin.reportui</groupId>
+            <artifactId>report-ui</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
@@ -149,7 +155,13 @@
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>5.2.2</version>
+            <version>3.17</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.vaadin.klaudeta</groupId>
+            <artifactId>grid-pagination</artifactId>
+            <version>2.0.10</version>
         </dependency>
 
         <dependency>
