@@ -30,7 +30,7 @@ public class AddressesImport extends XlsImport {
     @Override
     public void act() {
         List<District> districts = new AddAllDistricts(
-            Stream.iterate(0, i -> i < this.sheet.getLastRowNum(), i -> ++i)
+            Stream.iterate(0, i -> i <= this.sheet.getLastRowNum(), i -> ++i)
                 .map(this.sheet::getRow)
                 .map(row -> row.getCell(1))
                 .map(Cell::getStringCellValue)
